@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ package.title }} Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    
+        {% include "navbar.html" %}
+        <section class="details">
+            <div class="image">
+                <img src="data:image/jpeg;base64,{{ package.image }}" alt="Package Image">
+            </div>
+            <div class="content">
+                <h1>{{ package.title }}</h1>
+                <p><strong>Route:</strong> {{ package.route }}</p>
+                <p><strong>Price:</strong> {{ package.price }}</p>
+                <p><strong>Accommodation:</strong> {{ package.accomodation }}</p>
+                <a href="/book" class="btn">book now</a>
+            </div>
+        </section>
+        {% include "footer.html" %}
+</body>
+</html>

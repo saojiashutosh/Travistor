@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    
+    {% include "navbar.html" %}
+    <div class="container">
+        <div class="heriback" style="background:url('{{url_for('static',filename="images/WomenSpecial.jpg")}}')" >
+            <h1>Women Special</h1>
+         </div>
+    </div>
+
+    <section class="home-packages">
+
+        <h1 class="heading-title"> our packages </h1>
+     
+        <div class="box-container">
+
+        <div class="box">
+            <div class="image">
+               <img src="{{url_for('static',filename="images/wom2.jpg")}}" alt="">
+            </div>
+            <div class="content">
+               <h3>Rajasthan</h3>
+               <p>4 City
+                you will visit<br>
+                Udaipur(2N)--Pushkar--(1N)--Jaipur(2N)--Chittorgarh</p>
+                <h4 class="start">Starts from</h4>
+                 <h1 class="amount">₹34,000</h1>
+                 <a href="{{ url_for('package_details', package_id=1) }}" class="btn">View Details</a>
+                 <a href="/book" class="btn">book now</a>
+            </div>
+         </div>
+
+         <div class="box">
+            <div class="image">
+               <img src="{{url_for('static',filename="images/wom3.jpg")}}" alt="">
+            </div>
+            <div class="content">
+               <h3>Shimla Manali</h3>
+               <p>4 City
+                you will visit<br>
+                Chandigarh(1N)--Manali--(3N)--Shimla--(1N)--Chandigarh(1N)--Delhi</p>
+               <h4 class="start">Starts from</h4>
+               <h1 class="amount">₹39,000</h1>
+               <a href="{{ url_for('package_details', package_id=2) }}" class="btn">View Details</a>
+               <a href="/book" class="btn">book now</a>
+            </div>
+         </div>
+         
+         <div class="box">
+            <div class="image">
+               <img src="{{url_for('static',filename="images/wom4.jpg")}}" alt="">
+            </div>
+            <div class="content">
+               <h3>Kerala</h3>
+               <p>4 City you will visit<br>
+                Cochin(1N)--Munnar--(2N)--Periyar(1N)--Alleppey(1N)</p>
+               <h4 class="start">Starts from</h4>
+               <h1 class="amount">₹43,000</h1>
+               <a href="/details" class="btn">view details</a>
+               <a href="/book" class="btn">book now</a>
+            </div>
+         </div>
+
+         <div class="box">
+            <div class="image">
+               <img src="{{url_for('static',filename="images/wom1.jpg")}}" alt="">
+            </div>
+            <div class="content">
+               <h3>Patan Modhera</h3>
+               <p>3 Cities
+                  you will visit <br>
+                  Ahmedabad(2N)--Kevadia(2N)--Patan</p>
+               <h4 class="start">Starts from</h4>
+               <h1 class="amount">₹34,000</h1>
+               <a href="{{ url_for('package_details', package_id=4) }}" class="btn">View Details</a>
+               <a href="/book" class="btn">book now</a>
+            </div>
+         </div>
+
+         <div class="box">
+            <div class="image">
+               <img src="{{url_for('static',filename="images/wom5.jpg")}}" alt="">
+            </div>
+            <div class="content">
+               <h3>Coorg Mysore Bengaluru</h3>
+               <p>3 City
+                you will visit<br>
+                Bangalore(1N)--Coorg--(2N)--Mysore(2N)--Bengaluru</p>
+               <h4 class="start">Starts from</h4>
+               <h1 class="amount">₹48,000</h1>
+               <a href="/details" class="btn">view details</a>
+               <a href="/book" class="btn">book now</a>
+            </div>
+         </div>
+
+         <div class="box">
+            <div class="image">
+               <img src="{{url_for('static',filename="images/wom6.jpg")}}" alt="">
+            </div>
+            <div class="content">
+               <h3>Nainital Mussoorie Haridwar</h3>
+               <p>5 Cities
+                you will visit<br>
+                Haridwar(1N)--Mussoorie--(2N)--Nainital/Bhimtal(2N)--Rishikesh--Delhi</p>
+               <h4 class="start">Starts from</h4>
+               <h1 class="amount">₹45,000</h1>
+               <a href="{{ url_for('package_details', package_id=6) }}" class="btn">View Details</a>
+               <a href="/book" class="btn">book now</a>
+            </div>
+         </div>
+
+         
+        </div>
+   
+    </section>
+    {% include "footer.html" %}
+
+</body>
+</html>

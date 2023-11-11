@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>about</title>
+   
+   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+   
+{% include "navbar.html" %}
+
+<div class="heading" style="background:url('{{url_for('static',filename="images/header-bg-1.png")}}')" >
+   <h1>about us</h1>
+</div>
+
+<!-- about section starts  -->
+
+<section class="about">
+
+   <div class="image">
+      <img src="{{url_for('static',filename="images/1about.jpg")}}" alt="">
+   </div>
+
+   <div class="content">
+      <h3>why choose us?</h3>
+      <p>We have been moving excellent encounters for a considerable length of time through our cutting-edge planned occasion bundles and other fundamental travel administrations. We rouse our clients to carry on with a rich life, brimming with extraordinary travel encounters.</p>
+      <p>Through our exceptionally curated occasion bundles, we need to take you on an adventure where you personally enjoy the stunning magnificence of America and far-off terrains. We need you to observe sensational scenes that are a long way past your creative ability.</p>
+      <div class="icons-container">
+         <div class="icons">
+            <i class="fas fa-map"></i>
+            <span>top destinations</span>
+         </div>
+         <div class="icons">
+            <i class="fas fa-hand-holding-usd"></i>
+            <span>affordable price</span>
+         </div>
+         <div class="icons">
+            <i class="fas fa-headset"></i>
+            <span>24/7 guide service</span>
+         </div>
+      </div>
+   </div>
+
+</section>
+
+<!-- about section ends -->
+
+<!-- reviews section starts  -->
+
+<section class="reviews">
+
+   <h1 class="heading-title"> clients reviews </h1>
+
+   <div class="swiper reviews-slider">
+
+      <div class="swiper-wrapper">
+
+         <div class="swiper-slide slide">
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+            </div>
+            <p>Excellent! Very good service from beginning to end. Even with a COVID-related delay in the middle of it, Lisa stayed in contact with us and got us a reschedule with the utmost of ease. Thank you!</p>
+            <h3>Mumbaikar Nikhil</h3>
+            <span>traveler</span>
+            <img src="{{url_for('static',filename="images/pic-1.png")}}" alt="">
+         </div>
+
+         <div class="swiper-slide slide">
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+            </div>
+            <p>Travcation was a great company to deal with. Everything was very simple, professional and we were given all the information we required.Thank you for the great service</p>
+            <h3>Angel Priya</h3>
+            <span>Vlogger</span>
+            <img src="{{url_for('static',filename="images/pic-2.png")}}" alt="">
+         </div>
+
+         <div class="swiper-slide slide">
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+            </div>
+            <p>Liked how you respond with things that matter when making a booking so far in advance, booking received, deposit, paid, details of booking, reminder to pay and the user-website</p>
+            <h3>Atharva P</h3>
+            <span>traveler</span>
+            <img src="{{url_for('static',filename="images/pic-3.png")}}" alt="">
+         </div>
+
+         <div class="swiper-slide slide">
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+            </div>
+            <p>Yes would definitely book again.....were really happy with the great deal/special we got for our 3 night stay at Crown Metropol, Perth and hoping there will be a similar special released soon.</p>
+            <h3>Pooja</h3>
+            <span>traveler</span>
+            <img src="{{url_for('static',filename="images/pic-4.png")}}" alt="">
+         </div>
+
+         <div class="swiper-slide slide">
+            <div class="stars">
+               <i class="fasfa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+            </div>
+            <p>I will be using Travcation soon this month to book my holidays again in December at Perth Crown. Keep up the grat work and you will be hearing from me soon Cheers and Happy New Year!!!</p>
+            <h3>karan</h3>
+            <span>traveler</span>
+            <img src="{{url_for('static',filename="images/pic-5.png")}}" alt="">
+         </div>
+
+         <div class="swiper-slide slide">
+            <div class="stars">
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+               <i class="fas fa-star"></i>
+            </div>
+            <p>Super happy with travcation</p>
+            <h3>Amy</h3>
+            <span>traveler</span>
+            <img src="{{url_for('static',filename="images/pic-6.png")}}" alt="">
+         </div>
+
+      </div>
+
+   </div>
+
+</section>
+
+<!-- reviews section ends -->
+
+{% include "footer.html" %}
+
+<!-- swiper js link  -->
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<!-- custom js file link  -->
+<script src="{{ url_for('static',filename="js/script.js")}}"></script>
+
+</body>
+</html>

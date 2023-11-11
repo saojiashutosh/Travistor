@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Travel Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    
+    {% include "navbar.html" %}
+    <div class="container">
+        <div class="heriback" style="background:url('{{url_for('static',filename="images/roadback.jpg")}}')" >
+            <h1>Road Trips</h1>
+         </div>
+    </div>
+
+    <section class="home-packages">
+
+        <h1 class="heading-title"> our packages </h1>
+     
+        <div class="box-container">
+     
+           <div class="box">
+              <div class="image">
+                 <img src="{{url_for('static',filename="images/road1.jpg")}}" alt="">
+              </div>
+              <div class="content">
+                 <h3>Great Indian Peninsula</h3>
+                 <p>45 Cities
+                    you will visit <br>
+                    Araku Valley-- Dandi--Palitana--Rajkot--Mahabalipuram--Sriharikota--Anjarle--Chidambaram--Borra Caves--Konark--Chilika--Porbandar--Harihareshwar--Ratnagiri--Bhitarkanika(1N)--Velankanni(1N)--Kolkata(2N)--Sunderbans(2N)--Digha(2N)--Puri(2N)--Brahmapur(1N)--Vizag(3N)--Vijayawada(1N)--Nellore(1N)--Chennai(2N)--Pondicherry(2N)--Rameswaram(2N)--Kanyakumari(1N)--Thiruvananthapuram(2N)--Alleppey(1N)--Cochin(1N)--Bekal(2N)--Udupi(1N)--Gokarna(2N)--Goa(3N)--Ganpatipule(2N)--Dapoli(1N)--Murud(1N)--Alibag--(1N)--Mumbai(2N)--Surat(1N)--Bhavnagar(1N)--Diu(2N)--Somnath(1N)--Dwarka(2N)</p>
+                 <h4 class="start">Starts from</h4>
+                 <h1 class="amount">₹2,50,000</h1>
+                 <a href="/details" class="btn">view details</a>
+               <a href="/book" class="btn">book now</a>
+              </div>
+           </div>
+        </div>
+   
+    </section>
+    {% include "footer.html" %}
+
+</body>
+</html>

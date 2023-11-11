@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travistor</title>
+    <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;display=swap">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename="js/script.js") }}"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var homeSlider = new Swiper(".home-slider", {
+          loop: true,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+      });
+    </script>
+    
+</head>
+<body>
+  
+   {% include "navbar.html" %}
+   
+    <section class="home">
+      <div class="swiper-container home-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide slide" style="background-image: url('{{url_for('static', filename='images/home-slide-1.jpg')}}');">
+            <div class="content">
+              <span>explore, discover, travel</span>
+              <h3>travel around the world</h3>
+              <a href="/blog" class="btn">Read More</a>
+            </div>
+          </div>
+          <div class="swiper-slide slide" style="background-image: url('{{url_for('static', filename='images/home-slide-2.jpg')}}');">
+            <div class="content">
+              <span>explore, discover, travel</span>
+              <h3>travel around the world</h3>
+              <a href="/blog" class="btn">Read More</a>
+            </div>
+          </div>
+          <div class="swiper-slide slide" style="background-image: url('{{url_for('static', filename='images/home-slide-3.jpg')}}');">
+            <div class="content">
+              <span>explore, discover, travel</span>
+              <h3>make your tour worthwhile</h3>
+              <a href="/blog" class="btn">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2 class="heading-title">Our Services</h2>
+            <div class="box-container">
+
+               <div class="box">
+                  <img src="{{url_for('static',filename="images/icon-1.png")}}" alt="">
+                  <h3>adventure</h3>
+               </div>
+         
+               <div class="box">
+                  <img src="{{url_for('static',filename="images/icon-2.png")}}" alt="">
+                  <h3>tour guide</h3>
+               </div>
+         
+               <div class="box">
+                  <img src="{{url_for('static',filename="images/icon-3.png")}}" alt="">
+                  <h3>trekking</h3>
+               </div>
+         
+               <div class="box">
+                  <img src="{{url_for('static',filename="images/icon-4.png")}}" alt="">
+                  <h3>camp fire</h3>
+               </div>
+         
+               <div class="box">
+                  <img src="{{url_for('static',filename="images/icon-5.png")}}" alt="">
+                  <h3>off road</h3>
+               </div>
+         
+               <div class="box">
+                  <img src="{{url_for('static',filename="images/icon-6.png")}}" alt="">
+                  <h3>camping</h3>
+               </div>
+         
+            </div>
+        </div>
+    </section>
+
+    <section class="home-about">
+        <div class="image">
+            <img src="{{url_for('static',filename="images/1about.jpg")}}" alt="About Image">
+        </div>
+        <div class="content">
+         <h3>about us</h3>
+         <p>“Travel is the main thing you purchase that makes you more extravagant”. We, at travelll, swear by this and put stock in satisfying travel dreams that make you perpetually rich constantly.</p>
+         <a href="/about" class="btn">read more</a>
+      </div>
+    </section>
+
+    <section class="home-packages">
+
+      <h1 class="heading-title"> our packages </h1>
+   
+      <div class="box-container">
+   
+         <div class="box">
+            <div class="image">
+               <img src="{{url_for('static',filename="images/heri.jpg")}}" alt="">
+            </div>
+            <div class="content">
+               <h3>Family Holidays</h3>
+               <p>Unwind, explore, and bond with your loved ones on our Family Getaways!</p>
+               <a href="/fampack"  class="btn">book now</a>
+            </div>
+         </div>
+   
+         <div class="box">
+            <div class="image">
+               <img src="{{url_for('static',filename="images/womcard.jpg")}}" alt="">
+            </div>
+            <div class="content">
+               <h3>Women Special</h3>
+               <p>Empower Your Journey: Unleash the Spirit of Travel with Our Women's Special Tours</p>
+               <a href="/womenspecial " class="btn">book now</a>
+            </div>
+         </div>
+         
+         <div class="box">
+            <div class="image">
+               <img src="{{url_for('static',filename="images/img-4.jpg")}}" alt="">
+            </div>
+            <div class="content">
+               <h3>Seniors' Special</h3>
+               <p>Explore the world at your pace with our exclusive Seniors' Special Tour Packages. Unforgettable adventures tailored for you.</p>
+               <a href="/senior" class="btn">book now</a>
+            </div>
+         </div>
+   
+      </div>
+   
+   </section>
+
+   {% include "footer.html" %}
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+</body>
+</html>
