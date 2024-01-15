@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Travel Blog</title>
+   <title>Travistor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -18,37 +18,20 @@
         <h1 class="heading-title"> our packages </h1>
      
         <div class="box-container">
-     
-           <div class="box">
-              <div class="image">
-                 <img src="{{url_for('static',filename="images/fam1.png")}}" alt="">
-              </div>
-              <div class="content">
-                 <h3>Rann Utsav Getaway</h3>
-                 <p>2 Cities
-                    you will visit <br>
-                    Kutch(2N)---Bhuj---Dhordo</p>
-                 <h4 class="start">Starts from</h4>
-                 <h1 class="amount">₹11,500</h1>
-                 <a href="/details" class="btn">view details</a>
-               <a href="/book" class="btn">book now</a>
-              </div>
-           </div>
 
-        <div class="box">
+         <div class="box">
             <div class="image">
-               <img src="{{url_for('static',filename="images/fam2.png")}}" alt="">
+               <img src="{{url_for('static',filename="images/fam6.jpg")}}" alt="">
             </div>
             <div class="content">
-               <h3>Amritsar Escape</h3>
-               <p>1 City
+               <h3>Statue of Unity with Narmada tent city</h3>
+               <p>2 Cities
                 you will visit<br>
-                Amritsar
-                (2N)</p>
-                <h4 class="start">Starts from</h4>
-                 <h1 class="amount">₹15,000</h1>
-                 <a href="/details" class="btn">view details</a>
-               <a href="/book" class="btn">book now</a>
+                Kevadia(2N)--Vadodara--Narmada Tent City</p>
+               <h4 class="start">Starts from</h4>
+               <h1 class="amount">₹22,000</h1>
+               <a href="{{ url_for('package_details', package_id=13) }}" class="btn">View Details</a>
+               <a href="{{ url_for('book', package_name='Statue of Unity with Narmada tent city') }}" class="btn">Book Now</a>
             </div>
          </div>
 
@@ -65,10 +48,43 @@
                <h4 class="start">Starts from</h4>
                <h1 class="amount">₹20,000</h1>
                <a href="{{ url_for('package_details', package_id=11) }}" class="btn">View Details</a>
-               <a href="/book" class="btn">book now</a>
+               <a href="{{ url_for('book', package_name='Port Blair Escape') }}" class="btn">Book Now</a>
             </div>
          </div>
-         
+
+         <div class="box">
+            <div class="image">
+               <img src="{{url_for('static',filename="images/fam3.jpg")}}" alt="">
+            </div>
+            <div class="content">
+               <h3>Goa with Pride Sun Village Resort</h3>
+               <p>1 City
+                you will visit<br>
+                Goa
+                (3N)</p>
+               <h4 class="start">Starts from</h4>
+               <h1 class="amount">₹16,000</h1>
+               <a href="{{ url_for('package_details', package_id=12) }}" class="btn">View Details</a>
+               <a href="{{ url_for('book', package_name='Goa with Pride Sun Village Resort') }}" class="btn">Book Now</a>
+            </div>
+         </div>
+
+         <div class="box">
+            <div class="image">
+               <img src="{{url_for('static',filename="images/fam1.png")}}" alt="">
+            </div>
+            <div class="content">
+               <h3>Rann Utsav Getaway</h3>
+               <p>2 Cities
+                  you will visit <br>
+                  Kutch(2N)---Bhuj---Dhordo</p>
+               <h4 class="start">Starts from</h4>
+               <h1 class="amount">₹11,500</h1>
+               <a href="/details" class="btn">view details</a>
+             <a href="/book" class="btn">book now</a>
+            </div>
+         </div>
+
          <div class="box">
             <div class="image">
                <img src="{{url_for('static',filename="images/fam5.jpg")}}" alt="">
@@ -88,33 +104,17 @@
 
          <div class="box">
             <div class="image">
-               <img src="{{url_for('static',filename="images/fam3.jpg")}}" alt="">
+               <img src="{{url_for('static',filename="images/fam2.png")}}" alt="">
             </div>
             <div class="content">
-               <h3>Goa with Pride Sun Village Resort</h3>
+               <h3>Amritsar Escape</h3>
                <p>1 City
                 you will visit<br>
-                Goa
-                (3N)</p>
-               <h4 class="start">Starts from</h4>
-               <h1 class="amount">₹16,000</h1>
-               <a href="{{ url_for('package_details', package_id=12) }}" class="btn">View Details</a>
-               <a href="/book" class="btn">book now</a>
-            </div>
-         </div>
-
-         <div class="box">
-            <div class="image">
-               <img src="{{url_for('static',filename="images/fam6.jpg")}}" alt="">
-            </div>
-            <div class="content">
-               <h3>Statue of Unity with Narmada tent city</h3>
-               <p>2 Cities
-                you will visit<br>
-                Kevadia(2N)--Vadodara--Narmada Tent City</p>
-               <h4 class="start">Starts from</h4>
-               <h1 class="amount">₹22,000</h1>
-               <a href="{{ url_for('package_details', package_id=12) }}" class="btn">View Details</a>
+                Amritsar
+                (2N)</p>
+                <h4 class="start">Starts from</h4>
+                 <h1 class="amount">₹15,000</h1>
+                 <a href="/details" class="btn">view details</a>
                <a href="/book" class="btn">book now</a>
             </div>
          </div>

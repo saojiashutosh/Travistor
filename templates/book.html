@@ -4,38 +4,32 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>about</title>
-   
-   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <title>Travistor</title>
    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
 <body>
 {% include "navbar.html" %}    
-<form method="POST" action="/book">
+<form method="POST" action="/book?package_name={{ package_name }}">
     <div class="input-group">
-        <label for="username">Enter Your Name *</label>
-        <input type="text" name="username" id="username" required>
-    </div>
-    <div class="input-group">
-        <label for="numberInput">Number of Adults (Above 12 yrs) *</label>
-        <input type="number" id="numberInput" name="adult" min="0" max="10" required>
-        <label for="numberInputChild">Number of Child (Age 2 - 11 yrs)</label>
-        <input type="number" id="numberInputChild" name="child" min="0" max="10">
-        <label for="numberInputInfant">Number of Infant (Age 0 - 1 yr)</label>
-        <input type="number" id="numberInputInfant" name="infant" min="0" max="10">
-    </div>
-    <div class="input-group">
-        <label for="numberInputRooms">Enter number of rooms *</label>
-        <input type="number" id="numberInputRooms" name="rooms" min="0" max="10" required>
-    </div>
-    <div class="input-group">
+        
+        <label><strong>Booking for : {{ package_name }} </strong></label>
+
+        <label for="price"><strong>Total Price : ₹<span id="displayPrice">{{ package_price }}</span></strong>   </label>
+        <input type="hidden" name="package_price" id="package_price" value="{{ package_price }}">
+
+        <label for="name">Enter Your Name *</label>
+        <input type="text" name="username" id="username" pattern="[A-Za-z ]+" title="Only alphabets and spaces are allowed" required>
+    
+        <label for="numberInput">Number of Persons *</label>
+        <input type="number" id="numberInput" name="persons" min="0" max="10" required>
+        
         <label for="contact">Enter Contact *</label>
         <input type="tel" id="contact" name="contact" inputmode="numeric" minlength="10" maxlength="10" pattern="[0-9]{10}" required>
-    </div>
-    <div class="input-group">
-        <button type="submit" class="btn" href="/book" name="book">Book</button>
+        
+    
+        <button type="submit" class="btn" name="book">Book</button>
     </div>
 </form>
 
@@ -44,6 +38,41 @@
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
 <script src="{{ url_for('static',filename="js/script.js")}}"></script>
+<script>
+    $(document).ready(function () {
+        $('#numberInput').on('input', function () {
+            var numberOfPersons = $(this).val();
+            var packagePrice = parseFloat($('#package_price').val());
+            var total = numberOfPersons * packagePrice;
+            $('#displayPrice').text(total.toFixed(2));
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Validate name input (only text allowed)
+        var nameInput = document.getElementById("username");
+        nameInput.addEventListener("input", function () {
+            var isValid = /^[A-Za-z\s]+$/.test(this.value);
+            if (!isValid) {
+                alert("Please enter a valid name with only text characters.");
+                this.value = this.value.replace(/[^A-Za-z\s]/g, "");
+            }
+        });
+
+        // Validate contact input (only numeric allowed)
+        var contactInput = document.getElementById("contact");
+        contactInput.addEventListener("input", function () {
+            var isValid = /^\d+$/.test(this.value);
+            if (!isValid) {
+                alert("Please enter a valid numeric contact number.");
+                this.value = this.value.replace(/\D/g, "");
+            }
+        });
+    });
+</script>
+
 
 </body>
 </html>
