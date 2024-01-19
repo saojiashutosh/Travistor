@@ -22,20 +22,12 @@
                     <p><strong>Name:</strong> {{ booking.name }}</p>
                     <p><strong>Number of Persons:</strong> {{ booking.person }}</p>
                     <p><strong>Contact:</strong> {{ booking.contact }}</p>
-                    <p><strong>Total Price:</strong> ₹{{ booking.total_price }}</p>
-                    <hr>
-                    <form method="POST" action="{{ url_for('cancel_booking', booking_id=booking['_id']) }}">
-                        <button type="submit" class="btn" name="cancel">Cancel Booking</button>
-                    </form>
-                    
-                    
+                    <p><strong>Total Price:</strong> ₹{{ booking.total_price }}</p>                    
                   </div>
               </div>
           {% endfor %}
       </div>
   </section>
-  
-
    {% include "footer.html" %}
 </body>
 </html>

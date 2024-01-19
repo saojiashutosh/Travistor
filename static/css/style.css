@@ -872,13 +872,13 @@ strong {
    text-align: center;
 }
 
-/* .booking .box-container {
+.booking .box-container {
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
    gap: 2rem;
    padding: 2rem; 
-} */
+}
 
 .booking .box {
    border: var(--border);
