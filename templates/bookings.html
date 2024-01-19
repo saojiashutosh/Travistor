@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travistor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
+</head>
+<body>
+   {%include "navbar.html"%}
+   
+
+   <section class="booking">
+    <h1 class="heading-title">Bookings</h1>
+      <div class="box-container">
+          {% for booking in bookings %}
+              <div class="box">
+                  <div class="box-content">
+                    <p><strong>Package Name:</strong> {{ booking.package_name }}</p>
+                    <p><strong>Name:</strong> {{ booking.name }}</p>
+                    <p><strong>Number of Persons:</strong> {{ booking.person }}</p>
+                    <p><strong>Contact:</strong> {{ booking.contact }}</p>
+                    <p><strong>Total Price:</strong> ₹{{ booking.total_price }}</p>
+                    <hr>
+                    <form method="POST" action="{{ url_for('cancel_booking', booking_id=booking['_id']) }}">
+                        <button type="submit" class="btn" name="cancel">Cancel Booking</button>
+                    </form>
+                    
+                    
+                  </div>
+              </div>
+          {% endfor %}
+      </div>
+  </section>
+  
+
+   {% include "footer.html" %}
+</body>
+</html>

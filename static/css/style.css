@@ -14,6 +14,12 @@
    --text-shadow:0 1.5rem 3rem rgba(0,0,0,.3);
 }
 
+body {
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+
 *{
    font-family: 'Poppins', sans-serif;
    margin:0; padding:0;
@@ -583,6 +589,7 @@ section{
 .footer{
    background: url(../images/footer-bg.jpg) no-repeat;
    background-size: cover;
+   margin-top: auto;
    background-position: center;
 }
 
@@ -858,4 +865,44 @@ strong {
 .success{
    font-size: large;
    text-align: center;
+}
+
+.booking {
+   background: var(--light-bg);
+   text-align: center;
+}
+
+/* .booking .box-container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 2rem;
+   padding: 2rem; 
+} */
+
+.booking .box {
+   border: var(--border);
+   box-shadow: var(--box-shadow);
+   background: var(--white);
+   width: 40rem; /* Set a fixed width for the box */
+   min-width: 40rem; /* Set a minimum width for the box */
+   margin-bottom: 2rem;
+}
+
+.booking .box .box-content {
+   padding: 2rem;
+   text-align: center;
+}
+
+.booking .box .box-content p {
+   font-size: 1.5rem;
+   color: var(--light-black);
+   line-height: 2;
+   padding: 1rem 0;
+}
+
+.booking .heading-title {
+   font-size: 4rem;
+   font-weight: bold;
+   margin-bottom: 2rem;
 }

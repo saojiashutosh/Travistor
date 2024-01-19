@@ -79,9 +79,15 @@ def dashboard():
     else:
         flash('Please sign in to access the dashboard.', 'error')
         return redirect(url_for('signin'))
+    
+@app.after_request
+def add_header(response):
+    response.cache_control.no_store = True
+    return response
 
 @app.route("/logout")
 def logout():
+    session.pop('username', None)
     session.clear()
     flash('Successfully logged out!', 'success')
     return redirect(url_for('main'))
@@ -201,41 +207,66 @@ def book():
     if request.method == 'POST':
         print("Inside POST request")
         package_name = request.args.get('package_name')
-        package_price = float(request.form.get('package_price'))
+        package_price_str = request.form.get('package_price')
+        
+        if package_price_str is None:
+            flash('Package price is missing in the form', 'error')
+            return redirect(url_for('book'))
+        
+        try:
+            package_price = float(package_price_str)
+        except ValueError:
+            flash('Invalid package price format', 'error')
+            return redirect(url_for('book'))
+
         print(f"Package Name: {package_name}")
         
         try:
-             book = mongo.db.booking
+            book = mongo.db.booking
              
-             name = request.form['username']
-             person = request.form['persons']
-             contact = request.form['contact']
+            username = session['username']
+            name = request.form['username']
+            person = request.form['persons']
+            contact = request.form['contact']
              
-             total_price = package_price * int(person)  # Convert 'person' to an integer
-             print("Inserting data into the database...")
+            total_price = package_price * int(person) 
+            print("Inserting data into the database...")
              
-             book.insert_one({
-                 'package_name': package_name,
-                 'name': name,
-                 'person': person,
-                 'contact': contact,
-                 'total_price': total_price
-                 })
-             
-             flash('Booking successful!', 'success')
-             return redirect(url_for('success'))
+            book.insert_one({
+                'package_name': package_name,
+                'username': username,
+                'name': name,
+                'person': person,
+                'contact': contact,
+                'total_price': total_price
+            })
+            
+            return redirect(url_for('success'))
         except Exception as e:
             print(f"Error during insertion: {e}")
             flash('Error during booking. Please try again.', 'error')
-            if e is True:
-                return redirect(url_for('book'))
-        return redirect(url_for('success'))
-
+            return redirect(url_for('book'))
 
     package_name = request.args.get('package_name')
     package_price = float(request.args.get('package_price'))
     return render_template('book.html', package_name=package_name, package_price=package_price)
     
+@app.route("/bookings")
+def bookings():
+    app.logger.info('Rendering bookings.html')
+    if 'username' not in session:
+        flash('You need to sign in to view your bookings', 'warning')
+        return redirect(url_for('signin'))
+
+    try:
+        bookings = mongo.db.booking.find({'username': session['username']})
+        return render_template('bookings.html', bookings=bookings)
+    except Exception as e:
+        flash(f"Error fetching bookings: {e}", 'error')
+        return render_template('bookings.html', bookings=[])
+
+
+
 
    
 @app.route("/success")
@@ -244,12 +275,8 @@ def success():
             return render_template('success.html',username=session['username'])
         
     return render_template("success.html")
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
  
     
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)
     app.run()

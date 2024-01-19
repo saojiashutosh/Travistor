@@ -17,21 +17,23 @@
 </head>
 <body>
 
-<header class="header" id="header">
-    <a href="/index" class="logo">Travistor</a>
-    <div class="navbar" id="navbar">
-        <a href="/index">Home</a>
-        <a href="/packages">packages</a>
-        <a href="/blog">Blog</a>
-        <a href="/about">About</a>
-        {% if username is defined %}
-            <a>{{ username }}</a>
-            <a href="/logout" class="logout-btn" id="btnlog">Logout</a>
-        {% else %}
-            <a href="/signin">Sign In</a>
-        {% endif %}
-    </div>
-</header>
+    <header class="header" id="header">
+        <a href="/index" class="logo">Travistor</a>
+        <div class="navbar" id="navbar">
+            <a href="/index">Home</a>
+            <a href="/packages">Packages</a>
+            <a href="/blog">Blog</a>
+            <a href="/about">About</a>
+            {% if session['username'] %}
+                <a href="/bookings">Bookings</a>  <!-- Updated link to /bookings -->
+                <a>{{ session['username'] }}</a>
+                <a href="/logout" class="logout-btn" id="btnlog">Logout</a>
+            {% else %}
+                <a href="/signin">Sign In</a>
+            {% endif %}
+        </div>
+    </header>
+    
 
 </body>
 </html>

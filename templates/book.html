@@ -11,7 +11,7 @@
 </head>
 <body>
 {% include "navbar.html" %}    
-<form method="POST" action="/book?package_name={{ package_name }}">
+<form method="POST" action="{{ url_for('book', package_name=package_name, package_price=package_price) }}">
     <div class="input-group">
         
         <label><strong>Booking for : {{ package_name }} </strong></label>
