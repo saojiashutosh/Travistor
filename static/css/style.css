@@ -884,7 +884,7 @@ strong {
    border: var(--border);
    box-shadow: var(--box-shadow);
    background: var(--white);
-   width: 40rem;
+   width: 40rem; /* Set a fixed width for the box */
    min-width: 40rem;
    margin-bottom: 2rem;
 }
