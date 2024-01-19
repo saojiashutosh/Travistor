@@ -5,13 +5,11 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Travistor</title>
 
-   <!-- swiper css link  -->
    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-   <!-- font awesome cdn link  -->
+  
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-   <!-- custom css file link  -->
    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
@@ -25,7 +23,7 @@
             <a href="/blog">Blog</a>
             <a href="/about">About</a>
             {% if session['username'] %}
-                <a href="/bookings">Bookings</a>  <!-- Updated link to /bookings -->
+                <a href="/bookings">Bookings</a>  
                 <a>{{ session['username'] }}</a>
                 <a href="/logout" class="logout-btn" id="btnlog">Logout</a>
             {% else %}

@@ -51,7 +51,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Validate name input (only text allowed)
+    
         var nameInput = document.getElementById("username");
         nameInput.addEventListener("input", function () {
             var isValid = /^[A-Za-z\s]+$/.test(this.value);
@@ -61,7 +61,6 @@
             }
         });
 
-        // Validate contact input (only numeric allowed)
         var contactInput = document.getElementById("contact");
         contactInput.addEventListener("input", function () {
             var isValid = /^\d+$/.test(this.value);
