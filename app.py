@@ -1,6 +1,7 @@
 
 import base64
 import re
+from bson import ObjectId
 from flask import Flask, make_response, render_template, url_for, request, session, redirect, flash
 from flask_pymongo import PyMongo
 import bcrypt
@@ -265,9 +266,27 @@ def bookings():
         flash(f"Error fetching bookings: {e}", 'error')
         return render_template('bookings.html', bookings=[])
 
+@app.route("/cancel_booking/<booking_id>", methods=['POST'])
+def cancel_booking(booking_id):
+    if 'username' not in session:
+        flash('You need to sign in to cancel your booking', 'warning')
+        return redirect(url_for('signin'))
 
+    try:
+        # Ensure that the user has the right to cancel the booking
+        booking = mongo.db.booking.find_one({'_id': ObjectId(booking_id), 'username': session['username']})
+        if not booking:
+            flash('Invalid booking or you do not have permission to cancel it', 'error')
+            return redirect(url_for('bookings'))
 
+        # Remove the booking from the database
+        mongo.db.booking.delete_one({'_id': ObjectId(booking_id)})
 
+        flash('Booking canceled successfully', 'success')
+        return redirect(url_for('bookings'))
+    except Exception as e:
+        flash(f"Error canceling booking: {e}", 'error')
+        return redirect(url_for('bookings'))
    
 @app.route("/success")
 def success():
