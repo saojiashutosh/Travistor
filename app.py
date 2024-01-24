@@ -94,18 +94,18 @@ def logout():
 
 posts = [
     {
-        'title': 'Trip to Paris',
-        'content': 'My recent Paris trip was a whirlwind of enchantment. The Eiffel Towers twinkling lights, the Louvres artistic treasures, and the aroma of freshly baked croissants on every corner made it a magical experience. Parisian streets held surprises at every turn, from charming cafes to hidden boutiques. Paris, with its timeless allure, exceeded all expectations.',
-        'author': 'John Doe',
+        'title': 'A Whirlwind Tour of Gujarats Rich Heritage and Natural Beauty',
+        'content': 'Embarking on an eight-day whirlwind tour of Gujarat, my journey unfolded amidst the untamed wilderness of Gir, where a night among Asiatic lions set the stage for adventure. Moving to the spiritual enclave of Somnath, a tranquil night by the Arabian Sea offered cultural immersion. Dwarka, steeped in mythology, captivated with its sacred tales during a two-night stay. Ahmedabad, a blend of history and modernity, showcased bustling markets and architectural marvels over two nights. A final day in Patan unveiled Gujarats architectural brilliance at the UNESCO-listed Rani Ki Vav stepwell. In this brief span, Gujarat revealed a tapestry of experiences, from the regal roars of Gir to the tranquil shores of Somnath, the spiritual aura of Dwarka, the vibrant charm of Ahmedabad, and the historical allure of Patan, leaving indelible memories of cultural richness and natural wonders.',
+        'author': 'Ashwin Jha',
         'date_posted': 'October 1, 2023',
-        'image': '../static/images/blog1.png'  
+        'image': '../static/images/blog1.jpg'  
     },
     {
-        'title': 'Exploring Tokyo',
-        'content': 'Tokyo, a city of endless surprises. Skyscrapers meet shrines, and bustling streets are punctuated by serene gardens. Shibuya Crossings organized chaos is mesmerizing and Tsukiji Fish Markets sushi is a must-try. From cherry blossoms in Ueno Park to Akihabaras electronic paradise, Tokyo is a sensory adventure waiting to happen.',
-        'author': 'Jane Smith',
+        'title': ' A Blissful Journey through Bangalore, Coorg, and Mysore',
+        'content': 'Embarking on an enchanting journey, my exploration unfolded across Bangalore, Coorg, and Mysore, encapsulating the diverse tapestry of Karnatakas beauty. Starting in Bangalore for a night, I immersed myself in its modern allure before heading to Coorg, where two serene nights amidst mist-covered hills and coffee plantations rejuvenated my soul. The historic charm of Mysore beckoned next, with two nights spent exploring majestic palaces and vibrant markets. The grandeur of Mysore Palace lingered in my memories, making the two-night stay truly captivating. Returning to Bangalore, the seamless blend of technology and tradition in the bustling city marked the perfect finale to an eight-day odyssey, leaving me with a mosaic of unforgettable experiences.',
+        'author': 'Kalpesh Mahajan',
         'date_posted': 'September 15, 2023',
-        'image': '../static/images/blog2.png'
+        'image': '../static/images/blog2.jpg'
     },
 ]
 

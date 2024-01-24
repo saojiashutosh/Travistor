@@ -14,9 +14,9 @@
             <div class="content">
                 <h1>{{ package.title }}</h1>
                 <p><strong>Route:</strong> {{ package.route }}</p>
-                <p><strong>Price:</strong> {{ package.price }}</p>
+                <p><strong>Price:</strong> ₹{{ package.price }}</p>
                 <p><strong>Accommodation:</strong> {{ package.accomodation }}</p>
-                <a href="/book" class="btn">book now</a>
+                <a href="{{ url_for('book', package_name=package.title, package_price=package.price) }}" class="btn">book now</a>
             </div>
         </section>
         {% include "footer.html" %}

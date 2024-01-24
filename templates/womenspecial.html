@@ -31,7 +31,7 @@
                 <h4 class="start">Starts from</h4>
                  <h1 class="amount">₹34,000</h1>
                  <a href="{{ url_for('package_details', package_id=1) }}" class="btn">View Details</a>
-                 <a href="{{ url_for('book', package_name='Rajasthan') }}" class="btn">Book Now</a>
+                 <a href="{{ url_for('book', package_name='Rajasthan', package_price=34000) }}" class="btn">Book Now</a>
             </div>
          </div>
 
@@ -47,7 +47,7 @@
                <h4 class="start">Starts from</h4>
                <h1 class="amount">₹39,000</h1>
                <a href="{{ url_for('package_details', package_id=2) }}" class="btn">View Details</a>
-               <a href="{{ url_for('book', package_name='Shimla Manali') }}" class="btn">Book Now</a>
+               <a href="{{ url_for('book', package_name='Shimla Manali', package_price=39000) }}" class="btn">Book Now</a>
 
             </div>
          </div>
@@ -63,7 +63,7 @@
                <h4 class="start">Starts from</h4>
                <h1 class="amount">₹43,000</h1>
                <a href="{{ url_for('package_details', package_id=3) }}" class="btn">View Details</a>
-               <a href="{{ url_for('book', package_name='Kerala') }}" class="btn">Book Now</a>
+               <a href="{{  url_for('book', package_name='Kerala', package_price=43000) }}" class="btn">Book Now</a>
             </div>
          </div>
 
@@ -79,7 +79,7 @@
                <h4 class="start">Starts from</h4>
                <h1 class="amount">₹34,000</h1>
                <a href="{{ url_for('package_details', package_id=4) }}" class="btn">View Details</a>
-               <a href="{{ url_for('book', package_name='Patan Modhera') }}" class="btn">Book Now</a>
+               <a href="{{ url_for('book', package_name='Patan Modhera', package_price=34000) }}" class="btn">Book Now</a>
             </div>
          </div>
 
@@ -95,7 +95,7 @@
                <h4 class="start">Starts from</h4>
                <h1 class="amount">₹48,000</h1>
                <a href="{{ url_for('package_details', package_id=5) }}" class="btn">view details</a>
-               <a href="/book" class="btn">book now</a>
+               <a href="{{ url_for('book', package_name='Coorg Mysore Bengaluru', package_price=44000) }}" class="btn">Book Now</a>
             </div>
          </div>
 
@@ -111,7 +111,7 @@
                <h4 class="start">Starts from</h4>
                <h1 class="amount">₹45,000</h1>
                <a href="{{ url_for('package_details', package_id=6) }}" class="btn">View Details</a>
-               <a href="{{ url_for('book', package_name='Nainital Mussoorie Haridwar') }}" class="btn">Book Now</a>
+               <a href="{{ url_for('book', package_name='Nainital Mussoorie Haridwar', package_price=45000) }}" class="btn">Book Now</a>
             </div>
          </div>
 

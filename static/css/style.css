@@ -254,10 +254,6 @@ section{
    cursor: pointer;
 }
 
-.services .box-container .box:hover{
-   background: var(--black);
-}
-
 .services .box-container .box img{
    height: 7rem;
 }

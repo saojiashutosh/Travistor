@@ -17,15 +17,16 @@
     <form method="POST" action="/signup">
         <div class="input-group">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" required>
+            <input type="text" name="username" id="username" required/>
         </div>
         <div class="input-group">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" required>
+            <input type="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
         </div>
         <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" required>
+            <input type="password" name="password" id="password" minlength="8" maxlength="16" pattern="[0-9]{8,}" title="Enter only Numeric values" required/>
+            <button type="button" onclick="togglePasswordVisibility()">Show Password</button>
         </div>
         <div class="input-group">
             <button type="submit" class="btn" name="reg_user">Register</button>
@@ -46,6 +47,16 @@
 
 <!-- custom js file link  -->
 <script src="{{ url_for('static',filename="js/script.js")}}"></script>
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("password");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    }
+</script>
 
 </body>
 </html>
