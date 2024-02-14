@@ -25,8 +25,10 @@
         </div>
         <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" minlength="8" maxlength="16" pattern="[0-9]{8,}" title="Enter only Numeric values" required/>
-            <button type="button" onclick="togglePasswordVisibility()">Show Password</button>
+            <div style="position: relative;">
+                <input type="password" name="password" id="password" minlength="8" maxlength="16" pattern="[0-9]{8,}" title="Enter only Numeric values" required/>
+                <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 50px; top: 50%; transform: translateY(-50%); //cdnjs.cloudflare.com/ajax/libs/font-size:5px;">View</button>
+            </div>
         </div>
         <div class="input-group">
             <button type="submit" class="btn" name="reg_user">Register</button>

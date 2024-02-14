@@ -23,6 +23,8 @@ def is_valid_username(username):
 def main():
     return render_template('index.html')
 
+# Signup logic
+
 @app.route("/signup", methods=['POST', 'GET'])
 def signup():
     signup_user = None
@@ -43,6 +45,8 @@ def signup():
             return redirect(url_for('index'))
 
     return render_template('signup.html', signup_user=signup_user)
+
+# Signin logic
 
 @app.route("/signin", methods=['POST', 'GET'])
 def signin():
@@ -86,12 +90,16 @@ def add_header(response):
     response.cache_control.no_store = True
     return response
 
+# for logout and session handling
+
 @app.route("/logout")
 def logout():
     session.pop('username', None)
     session.clear()
     flash('Successfully logged out!', 'success')
     return redirect(url_for('main'))
+
+# used dictionary for blogs
 
 posts = [
     {
@@ -186,6 +194,8 @@ def packages():
 
 packages = mongo.db.package_details
 
+# packages details
+
 @app.route('/package/<int:package_id>')
 def package_details(package_id):
     package = mongo.db.package_details.find_one({'_id': package_id})
@@ -197,6 +207,8 @@ def package_details(package_id):
     else:
         return "Package not found."
     
+    
+# booking of packages 
     
 @app.route("/book", methods=['POST', 'GET'])
 def book():
@@ -251,6 +263,8 @@ def book():
     package_name = request.args.get('package_name')
     package_price = float(request.args.get('package_price'))
     return render_template('book.html', package_name=package_name, package_price=package_price)
+ 
+#bookings page logic
     
 @app.route("/bookings")
 def bookings():
@@ -265,6 +279,8 @@ def bookings():
     except Exception as e:
         flash(f"Error fetching bookings: {e}", 'error')
         return render_template('bookings.html', bookings=[])
+    
+#package should get cancle after clicking on cancle booking button
 
 @app.route("/cancel_booking/<booking_id>", methods=['POST'])
 def cancel_booking(booking_id):
@@ -273,7 +289,7 @@ def cancel_booking(booking_id):
         return redirect(url_for('signin'))
 
     try:
-        # Ensure that the user has the right to cancel the booking
+        
         booking = mongo.db.booking.find_one({'_id': ObjectId(booking_id), 'username': session['username']})
         if not booking:
             flash('Invalid booking or you do not have permission to cancel it', 'error')
@@ -287,6 +303,8 @@ def cancel_booking(booking_id):
     except Exception as e:
         flash(f"Error canceling booking: {e}", 'error')
         return redirect(url_for('bookings'))
+  
+# success should be called after the successfull booking of package 
    
 @app.route("/success")
 def success():

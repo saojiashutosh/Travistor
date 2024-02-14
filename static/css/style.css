@@ -110,7 +110,7 @@ section{
    text-transform: uppercase;
    color:var(--black);
 }
-
+/* navbar start */
 .header {
    position: sticky;
     top:0; left:0; right:0;
@@ -168,6 +168,8 @@ section{
    background-color: #c9302c; /* Change to the hover color */
 }
 
+/* navbar over */
+/* index page start */
 .home{
    padding:0;
 }
@@ -371,6 +373,7 @@ section{
    line-height: 2;
    padding:1rem 0;
 }
+
 
 .about{
    display: flex;
@@ -580,7 +583,7 @@ section{
    margin-top: 2rem;
 }
 
-
+/* footer start */
 
 .footer{
    background: url(../images/footer-bg.jpg) no-repeat;
@@ -637,7 +640,7 @@ section{
    color:var(--black);
 }
 
-
+/* footer end */
 /* media queries  */
 
 @media (max-width:1200px){
@@ -858,10 +861,14 @@ strong {
    font-size: 19px;
 }
 
+/*  success.html start  */
 .success{
    font-size: large;
    text-align: center;
 }
+/* success.html over  */
+
+/* booking.html start */
 
 .booking {
    background: var(--light-bg);
@@ -902,3 +909,4 @@ strong {
    font-weight: bold;
    margin-bottom: 2rem;
 }
+/* booking.html over */
