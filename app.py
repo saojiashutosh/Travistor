@@ -376,7 +376,8 @@ def addwishlist(package_id):
             "username": session["username"],
             "package_name": package["title"],
             "package_price": package["price"],
-            "package_details": {"image": package["image"], "route": package["route"]},
+            "image": package["image"],
+            "route": package["route"],
         }
         mongo.db.addwishlist.insert_one(wishlist_item)
         flash("Package added to wishlist successfully", "success")
@@ -394,23 +395,40 @@ def wishlist():
         return redirect(url_for("signin"))
 
     try:
-        wishlist = mongo.db.addwishlist.find({"username": session["username"]})
-        return render_template("wishlist.html", wishlist=wishlist)
+        wishlist_items_cursor = mongo.db.addwishlist.find(
+            {"username": session["username"]}
+        )
+        wishlist_items = []
+        for item in wishlist_items_cursor:
+            if "image" in item:
+                item["image"] = base64.b64encode(item["image"]).decode("utf-8")
+            wishlist_items.append(item)
+        wishlist_items_cursor.close()
+
+        return render_template("wishlist.html", wishlist=wishlist_items)
     except Exception as e:
         flash(f"Error fetching wishlist: {e}", "error")
         return render_template("wishlist.html", wishlist=[])
 
 
-@app.route("/package/<int:package_id>")
-def package_details(package_id):
-    package = mongo.db.package_details.find_one({"_id": package_id})
-    if package:
-        image_data = base64.b64encode(package["image"]).decode("utf-8")
-        package["image"] = image_data
+@app.route("/remove_package/<string:package_id>", methods=["POST"])
+def remove_package(package_id):
+    try:
+        if "username" not in session:
+            flash("You need to sign in to remove items from your wishlist", "warning")
+            return redirect(url_for("signin"))
 
-        return render_template("package_details.html", package=package)
-    else:
-        return "Package not found."
+        # Convert package_id to ObjectId
+        package_id = ObjectId(package_id)
+
+        # Delete the package from the wishlist
+        result = mongo.db.addwishlist.delete_one(
+            {"_id": package_id, "username": session["username"]}
+        )
+        return redirect(url_for("wishlist"))
+    except Exception as e:
+        flash(f"Error removing package: {e}", "error")
+        return redirect(url_for("wishlist"))
 
 
 if __name__ == "__main__":

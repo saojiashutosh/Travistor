@@ -12,17 +12,17 @@
    {%include "navbar.html"%}
    
 
-   <section class="booking">
+   <section class="home-packages">
     <h1 class="heading-title">Bookings</h1>
       <div class="box-container">
           {% for booking in bookings %}
               <div class="box">
-                  <div class="box-content">
-                    <p><strong>Package Name:</strong> {{ booking.package_name }}</p>
-                    <p><strong>Name:</strong> {{ booking.name }}</p>
-                    <p><strong>Number of Persons:</strong> {{ booking.person }}</p>
-                    <p><strong>Contact:</strong> {{ booking.contact }}</p>
-                    <p><strong>Total Price:</strong> ₹{{ booking.total_price }} (Pending)</p>
+                <div class="content">
+                    <h2><strong>Package Name: {{ booking.package_name }}</strong></h2>
+                    <h3><strong>Name: {{ booking.name }}</strong></h3>
+                    <h3><strong>Number of Persons: {{ booking.person }}</strong></h3>
+                    <h3><strong>Contact: {{ booking.contact }}</strong></h3>
+                    <h1 class="amount"><strong>Total Price: ₹{{ booking.total_price }} (Pending)</strong></h1>
                     <input type="hidden" name="booking_id" value="{{ booking._id }}">
                     <form method="POST" action="{{ url_for('cancel_booking', booking_id=booking['_id']) }}" id="cancel-form-{{ booking._id }}">
                         <input type="hidden" name="booking_id" value="{{ booking._id }}">
