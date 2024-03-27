@@ -17,6 +17,9 @@
       <div class="box-container">
           {% for wishlist in wishlist %}
               <div class="box">
+                <div class="image">
+                    <img src="data:image/jpeg;base64,{{ wishlist.package_details.image }}" alt="Package Image">
+                </div>
                 <div class="content">
                     <h3>{{ wishlist.package_name }}</h3>
                     <h1 class="amount">₹{{ wishlist.package_price }}</h1>
