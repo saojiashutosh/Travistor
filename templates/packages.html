@@ -13,6 +13,10 @@
          </div>
     </div>
 
+    <div class="filter-buttons">
+      <button onclick="sortPackages('name')">Sort by Name</button>
+   </div>
+   
   <section class="home-packages">
         <h1 class="heading-title"> our packages </h1>
      
@@ -31,8 +35,8 @@
                      <h1 class="amount">₹34,000</h1>
                      <a href="{{ url_for('package_details', package_id=1) }}" class="btn">View Details</a>
                      <a href="{{ url_for('book', package_name='Rajasthan', package_price=34000) }}" class="btn">Book Now</a>
-
-                </div>
+                     <a href="{{ url_for('addwishlist', package_id=1) }}" class ="btn-with-image"></a>
+                  </div>
              </div>
     
              <div class="box">
@@ -48,6 +52,7 @@
                    <h1 class="amount">₹39,000</h1>
                    <a href="{{ url_for('package_details', package_id=2) }}" class="btn">View Details</a>
                    <a href="{{ url_for('book', package_name='Shimla Manali', package_price=39000) }}" class="btn">Book Now</a>
+                   <a href="{{ url_for('addwishlist', package_id=2) }}" class ="btn-with-image"></a>
                 </div>
              </div>
              
@@ -63,6 +68,7 @@
                    <h1 class="amount">₹43,000</h1>
                    <a href="{{ url_for('package_details', package_id=3) }}" class="btn">View Details</a>
                    <a href="{{ url_for('book', package_name='Kerala', package_price=43000) }}" class="btn">Book Now</a>
+                   <a href="{{ url_for('addwishlist', package_id=3) }}" class ="btn-with-image"></a>
                 </div>
              </div>
     
@@ -79,6 +85,7 @@
                    <h1 class="amount">₹34,000</h1>
                    <a href="{{ url_for('package_details', package_id=4) }}" class="btn">View Details</a>
                    <a href="{{ url_for('book', package_name='Patan Modhera', package_price=34000) }}" class="btn">Book Now</a>
+                   <a href="{{ url_for('addwishlist', package_id=4) }}" class ="btn-with-image"></a>
                 </div>
              </div>
     
@@ -95,6 +102,7 @@
                    <h1 class="amount">₹45,000</h1>
                    <a href="{{ url_for('package_details', package_id=6) }}" class="btn">View Details</a>
                    <a href="{{ url_for('book', package_name='Nainital Mussoorie Haridwar', package_price=45000) }}" class="btn">Book Now</a>
+                   <a href="{{ url_for('addwishlist', package_id=6) }}" class ="btn-with-image"></a>
                 </div>
              </div>
              
@@ -111,6 +119,7 @@
                    <h1 class="amount">₹38,000</h1>
                    <a href="{{ url_for('package_details', package_id=7) }}" class="btn">View Details</a>
                    <a href="{{ url_for('book', package_name='Gujarat', package_price=38000) }}" class="btn">Book Now</a>
+                   <a href="{{ url_for('addwishlist', package_id=7) }}" class ="btn-with-image"></a>
                 </div>
              </div>
   
@@ -127,6 +136,7 @@
                    <h1 class="amount">₹38,000</h1>
                    <a href="{{ url_for('package_details', package_id=8) }}" class="btn">View Details</a>
                    <a href="{{ url_for('book', package_name='Indore Ujjain Mandu', package_price=38000) }}" class="btn">Book Now</a>
+                   <a href="{{ url_for('addwishlist', package_id=8) }}" class ="btn-with-image"></a>
               </div>
            </div>
            
@@ -143,6 +153,7 @@
                  <h1 class="amount">₹44,000</h1>
                  <a href="{{ url_for('package_details', package_id=5) }}" class="btn">View Details</a>
                  <a href="{{ url_for('book', package_name='Coorg Mysore Bengaluru', package_price=44000) }}" class="btn">Book Now</a>
+                 <a href="{{ url_for('addwishlist', package_id=5) }}" class ="btn-with-image"></a>
               </div>
            </div>
   
@@ -159,6 +170,7 @@
                  <h1 class="amount">₹49,000</h1>
                  <a href="{{ url_for('package_details', package_id=9) }}" class="btn">View Details</a>
                  <a href="{{ url_for('book', package_name='PondicherryMahabalipuram', package_price=49000) }}" class="btn">Book Now</a>
+                 <a href="{{ url_for('addwishlist', package_id=9) }}" class ="btn-with-image"></a>
               </div>
            </div>
   
@@ -175,6 +187,7 @@
                  <h1 class="amount">₹49,000</h1>
                  <a href="{{ url_for('package_details', package_id=10) }}" class="btn">View Details</a>
                  <a href="{{ url_for('book', package_name='Varanasi Ayodhya Lucknow', package_price=49000) }}" class="btn">Book Now</a>
+                 <a href="{{ url_for('addwishlist', package_id=10) }}" class ="btn-with-image"></a>
               </div>
            </div>
 
@@ -192,6 +205,7 @@
              <h1 class="amount">₹20,000</h1>
              <a href="{{ url_for('package_details', package_id=11) }}" class="btn">View Details</a>
              <a href="{{ url_for('book', package_name='Port Blair Escape', package_price=20000) }}" class="btn">Book Now</a>
+             <a href="{{ url_for('addwishlist', package_id=11) }}" class ="btn-with-image"></a>
           </div>
        </div>
 
@@ -208,6 +222,7 @@
              <h1 class="amount">₹16,000</h1>
              <a href="{{ url_for('package_details', package_id=12) }}" class="btn">View Details</a>
              <a href="{{ url_for('book', package_name='Goa with Pride Sun Village Resort', package_price=16000) }}" class="btn">Book Now</a>
+             <a href="{{ url_for('addwishlist', package_id=12) }}" class ="btn-with-image"></a>
           </div>
        </div>
 
@@ -224,6 +239,7 @@
              <h1 class="amount">₹22,000</h1>
              <a href="{{ url_for('package_details', package_id=13) }}" class="btn">View Details</a>
              <a href="{{ url_for('book', package_name='Statue of Unity with Narmada tent city', package_price=22000) }}" class="btn">Book Now</a>
+             <a href="{{ url_for('addwishlist', package_id=13) }}" class ="btn-with-image"></a>
           </div>
        </div>
            
@@ -231,6 +247,35 @@
    
   </section>
     {% include "footer.html" %}
+
+
+    <script>
+      function sortPackages(sortBy) {
+         var container = document.querySelector('.box-container');
+         var boxes = Array.from(container.children);
+
+         boxes.sort(function(a, b) {
+            var nameA = a.querySelector('.content h3').textContent.toUpperCase();
+            var nameB = b.querySelector('.content h3').textContent.toUpperCase();
+            
+            if (sortBy === 'name') {
+               if (nameA < nameB) {
+                  return -1;
+               }
+               if (nameA > nameB) {
+                  return 1;
+               }
+               return 0;
+            }
+         });
+
+         // Re-append sorted boxes
+         container.innerHTML = '';
+         boxes.forEach(function(box) {
+            container.appendChild(box);
+         });
+      }
+   </script>
 
 </body>
 </html>

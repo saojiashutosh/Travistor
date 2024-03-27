@@ -149,8 +149,27 @@
    </section>
 
    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-   <script src="https://mediafiles.botpress.cloud/466902a0-ebd8-4fb6-b4f9-7820b30fb70f/webchat/config.js" defer></script>
-
+   <script>
+   window.botpressWebChat.init({
+         "composerPlaceholder": "Chat with Dizi",
+         "botConversationDescription": "Ask anything about packages",
+         "botId": "466902a0-ebd8-4fb6-b4f9-7820b30fb70f",
+         "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+         "messagingUrl": "https://messaging.botpress.cloud",
+         "clientId": "466902a0-ebd8-4fb6-b4f9-7820b30fb70f",
+         "webhookId": "d6499b73-0f01-4df0-8056-4fbb8e3c71a6",
+         "lazySocket": true,
+         "themeName": "prism",
+         "botName": "Dizi",
+         "stylesheet": "https://webchat-styler-css.botpress.app/prod/9eae3021-8d54-4a4c-aa80-0e27ab0bcdf7/v60901/style.css",
+         "frontendVersion": "v1",
+         "useSessionStorage": true,
+         "enableConversationDeletion": true,
+         "showPoweredBy": true,
+         "theme": "prism",
+         "themeColor": "#2563eb"
+   });
+   </script>
    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     
    {% include "footer.html" %}

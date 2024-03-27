@@ -23,7 +23,8 @@
             <a href="/blog">Blog</a>
             <a href="/about">About</a>
             {% if session['username'] %}
-                <a href="/bookings">Bookings</a>  
+                <a href="/bookings">Bookings</a>
+                <a href="/wishlist">Wishlist</a>
                 <a>{{ session['username'] }}</a>
                 <a href="/logout" class="logout-btn" id="btnlog">Logout</a>
             {% else %}

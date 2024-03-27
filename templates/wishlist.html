@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travistor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
+</head>
+<body>
+   {%include "navbar.html"%}
+   
+
+   <section class="home-packages">
+    <h1 class="heading-title">Wishlist</h1>
+      <div class="box-container">
+          {% for wishlist in wishlist %}
+              <div class="box">
+                <div class="content">
+                    <h3>{{ wishlist.package_name }}</h3>
+                    <h1 class="amount">₹{{ wishlist.package_price }}</h1>
+                    <p><strong>Route:</strong> ₹{{ wishlist.package_details.route }}</p>           
+                  </div>
+              </div>
+          {% endfor %} 
+      </div>
+  </section>
+   {% include "footer.html" %}
+</body>
+</html>

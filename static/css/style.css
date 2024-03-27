@@ -74,14 +74,16 @@ section{
    text-shadow: var(--text-shadow);
 }
 
-.btn{
+.btn {
    display: inline-block;
    background: var(--black);
    margin-top: 1rem;
-   color:var(--white);
+   color: var(--white);
    font-size: 1.7rem;
-   padding:1rem 3rem;
+   padding: 1rem 3rem;
    cursor: pointer;
+   width: auto; 
+   height: auto; 
 }
 
 .btn:hover{
@@ -126,7 +128,7 @@ section{
 
 .logo {
    font-size: 2.5rem;
-   color:var(--black);
+   color:var(#8e44ad);
    margin-left: 20px; 
 }
 
@@ -911,13 +913,15 @@ strong {
 }
 /* booking.html over */
 
-.bpw-botinfo-container {
-   margin: 0 auto; /* Center the container */
-   max-width: 800px; /* Set a maximum width of 800px */
-   width: 100%; /* Set the width to 100% */
-   text-align: center; /* Center align the text */
-   color: #1e1e1e; /* Set the font color to a dark gray */
-   overflow-y: auto; /* Add a vertical scroll bar if the content overflows */
-   height: 600px; /* Set the height to 600 pixels */
+/* wishlsit button */
+.btn-with-image {
+   display: inline-block;
+   margin-left: 1rem;
+   color: var(--white);
+   cursor: pointer;
+   width: 30px; 
+   height: 30px; 
+   background-image: url(../images/wishlist.png); 
+   background-size: cover; 
+   background-position: center; 
 }
-

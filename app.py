@@ -312,7 +312,47 @@ def success():
             return render_template('success.html',username=session['username'])
         
     return render_template("success.html")
+
+@app.route('/addwishlist/<int:package_id>')
+def addwishlist(package_id):
+    if 'username' not in session:
+        flash('You need to sign in to view your wishlist', 'warning')
+        return redirect(url_for('signin'))
+    
+    
+    package = mongo.db.package_details.find_one({'_id': package_id})
+    if package:
+        wishlist_item = {
+            'username': session['username'],
+            'package_name': package['title'],
+            'package_price': package['price'],
+            'package_details': {
+                'image': package['image'],
+                'route': package['route']
+            }
+        }
+        mongo.db.addwishlist.insert_one(wishlist_item)
+        flash('Package added to wishlist successfully', 'success')
+        return redirect(request.referrer)
+    else:
+        flash('Package not found', 'error')
+        return redirect(request.referrer)
+
+
  
+@app.route("/wishlist")
+def wishlist():
+    app.logger.info('Rendering wishlist.html')
+    if 'username' not in session:
+        flash('You need to sign in to view your wishlist', 'warning')
+        return redirect(url_for('signin'))
+
+    try:
+        wishlist = mongo.db.addwishlist.find({'username': session['username']})
+        return render_template('wishlist.html', wishlist=wishlist)
+    except Exception as e:
+        flash(f"Error fetching wishlist: {e}", 'error')
+        return render_template('wishlist.html', wishlist=[])
     
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=False)
