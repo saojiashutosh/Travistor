@@ -806,8 +806,8 @@ strong {
    display: flex;
    align-items: center;
    justify-content: center;
+   
 }
-
 .heriback h1{
    
    font-size: 10rem;
@@ -910,3 +910,14 @@ strong {
    margin-bottom: 2rem;
 }
 /* booking.html over */
+
+.bpw-botinfo-container {
+   margin: 0 auto; /* Center the container */
+   max-width: 800px; /* Set a maximum width of 800px */
+   width: 100%; /* Set the width to 100% */
+   text-align: center; /* Center align the text */
+   color: #1e1e1e; /* Set the font color to a dark gray */
+   overflow-y: auto; /* Add a vertical scroll bar if the content overflows */
+   height: 600px; /* Set the height to 600 pixels */
+}
+
