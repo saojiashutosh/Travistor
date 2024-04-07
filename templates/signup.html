@@ -14,19 +14,20 @@
 <body>
 {% include "navbar.html" %}
 <div>
-    <form method="POST" action="/signup">
+    <form id="signupForm" method="POST" action="/signup">
         <div class="input-group">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" required/>
         </div>
         <div class="input-group">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
+            <input type="email" name="email" id="email" required/>
+            <span id="emailError" style="display:none; color:red;">Please enter a valid email address.</span>
         </div>
         <div class="input-group">
             <label for="password">Password</label>
             <div style="position: relative;">
-                <input type="password" name="password" id="password" minlength="8" maxlength="16" pattern="[0-9]{8,}" title="Enter only Numeric values" required/>
+                <input type="password" name="password" id="password" minlength="8" maxlength="16" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$" title="Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character" required/>
                 <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 50px; top: 50%; transform: translateY(-50%); //cdnjs.cloudflare.com/ajax/libs/font-size:5px;">View</button>
             </div>
         </div>
@@ -58,9 +59,22 @@
             passwordInput.type = "password";
         }
     }
+
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+        var emailInput = document.getElementById('email');
+        var emailError = document.getElementById('emailError');
+
+        // Regular expression for email validation
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(emailInput.value)) {
+            emailError.style.display = 'block';
+            event.preventDefault(); 
+        } else {
+            emailError.style.display = 'none';
+        }
+    });
 </script>
 
-</body>
-</html>
 </body>
 </html>

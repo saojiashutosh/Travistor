@@ -31,7 +31,8 @@
                  <h4 class="start">Starts from</h4>
                  <h1 class="amount">₹38,000</h1>
                  <a href="{{ url_for('package_details', package_id=7) }}" class="btn">View Details</a>
-                 <a href="{{ url_for('book', package_name='Gujarat', package_price=38000) }}" class="btn">Book Now</a>>
+                 <a href="{{ url_for('book', package_name='Gujarat', package_price=38000) }}" class="btn">Book Now</a>
+                 <a href="{{ url_for('addwishlist', package_id=7) }}" class ="btn-with-image"></a>
               </div>
            </div>
 
@@ -48,6 +49,7 @@
                 <h1 class="amount">₹38,000</h1>
                 <a href="{{ url_for('package_details', package_id=8) }}" class="btn">View Details</a>
                 <a href="{{ url_for('book', package_name='Indore Ujjain Mandu', package_price=38000) }}" class="btn">Book Now</a>
+                <a href="{{ url_for('addwishlist', package_id=8) }}" class ="btn-with-image"></a>
             </div>
          </div>
 
@@ -64,6 +66,7 @@
                <h1 class="amount">₹43,000</h1>
                <a href="{{ url_for('package_details', package_id=6) }}" class="btn">View Details</a>
                <a href="{{ url_for('book', package_name='Nainital Mussoorie Haridwar', package_price=45000) }}" class="btn">Book Now</a>
+               <a href="{{ url_for('addwishlist', package_id=6) }}" class ="btn-with-image"></a>
             </div>
          </div>
          
@@ -80,6 +83,7 @@
                <h1 class="amount">₹44,000</h1>
                <a href="{{ url_for('package_details', package_id=5) }}" class="btn">View Details</a>
                <a href="{{ url_for('book', package_name='Coorg Mysore Bengaluru', package_price=44000) }}" class="btn">Book Now</a>
+               <a href="{{ url_for('addwishlist', package_id=5) }}" class ="btn-with-image"></a>
             </div>
          </div>
 
@@ -96,6 +100,7 @@
                <h1 class="amount">₹49,000</h1>
                <a href="{{ url_for('package_details', package_id=9) }}" class="btn">View Details</a>
                <a href="{{ url_for('book', package_name='PondicherryMahabalipuram', package_price=49000) }}" class="btn">Book Now</a>
+               <a href="{{ url_for('addwishlist', package_id=9) }}" class ="btn-with-image"></a>
             </div>
          </div>
 
@@ -112,6 +117,7 @@
                <h1 class="amount">₹49,000</h1>
                <a href="{{ url_for('package_details', package_id=10) }}" class="btn">View Details</a>
                <a href="{{ url_for('book', package_name='Varanasi Ayodhya Lucknow', package_price=49000) }}" class="btn">Book Now</a>
+               <a href="{{ url_for('addwishlist', package_id=10) }}" class ="btn-with-image"></a>
             </div>
          </div>
 
