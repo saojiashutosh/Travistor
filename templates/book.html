@@ -11,7 +11,7 @@
 </head>
 <body>
 {% include "navbar.html" %}    
-<form method="POST" action="{{ url_for('book', package_name=package_name, package_price=package_price) }}">
+<form id="bookingForm" method="POST" action="{{ url_for('book', package_name=package_name, package_price=package_price) }}">
     <div class="input-group">
         
         <label><strong>Booking for : {{ package_name }} </strong></label>
@@ -20,7 +20,7 @@
         <input type="hidden" name="package_price" id="package_price" value="{{ package_price }}">
 
         <label for="name">Enter Your Name *</label>
-        <input type="text" name="username" id="username" pattern="[A-Za-z ]+" title="Only alphabets and spaces are allowed" required>
+        <input type="text" name="username" id="username" pattern="[A-Za-z]+" title="Only alphabets are allowed" required>
     
         <label for="numberInput">Number of Persons *</label>
         <input type="number" id="numberInput" name="persons" min="0" max="10" required> <!-- Removed readonly -->
@@ -39,30 +39,53 @@
 
 <script src="{{ url_for('static',filename="js/script.js")}}"></script>
 <script>
-    $(document).ready(function () {
-        $('#numberInput').on('input', function () {
-            var numberOfPersons = $(this).val();
-            var packagePrice = parseFloat($('#package_price').val());
-            var total = numberOfPersons * packagePrice;
-            $('#displayPrice').text(total.toFixed(2));
-        });
-        
-        // Prevent manual typing in the number input field
-        $('#numberInput').on('keydown', function(e) {
-            e.preventDefault();
-        });
+    // Function to store form data in local storage
+    function storeFormData() {
+        var formData = {
+            username: $('#username').val(),
+            persons: $('#numberInput').val(),
+            contact: $('#contact').val()
+        };
+        localStorage.setItem('formData', JSON.stringify(formData));
+    }
+
+    // Function to retrieve form data from local storage and populate the form fields
+    function populateFormData() {
+        var formData = localStorage.getItem('formData');
+        if (formData) {
+            formData = JSON.parse(formData);
+            $('#username').val(formData.username);
+            $('#numberInput').val(formData.persons);
+            $('#contact').val(formData.contact);
+        }
+    }
+
+    // Call populateFormData function when the page loads
+    $(document).ready(function() {
+        populateFormData();
+    });
+
+    // Store form data when form is submitted
+    $('#bookingForm').on('submit', function() {
+        storeFormData();
+    });
+
+    // Prevent manual typing in the number input field
+    $('#numberInput').on('keydown', function(e) {
+        e.preventDefault();
     });
 </script>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
     
         var nameInput = document.getElementById("username");
         nameInput.addEventListener("input", function () {
-            var isValid = /^[A-Za-z\s]+$/.test(this.value);
+            var isValid = /^[A-Za-z]+$/.test(this.value);
             if (!isValid) {
                 alert("Please enter a valid name with only text characters.");
-                this.value = this.value.replace(/[^A-Za-z\s]/g, "");
+                this.value = this.value.replace(/[^A-Za-z]/g, "");
             }
         });
 
@@ -76,7 +99,6 @@
         });
     });
 </script>
-
 
 </body>
 </html>

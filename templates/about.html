@@ -50,6 +50,26 @@
 </section>
 
 <!-- about section ends -->
+<div class="content">
+   <div class="plot-container">
+      {% if plot_data %}
+         <img src="data:image/png;base64,{{ plot_data }}" alt="Package Distribution Plot">
+      {% else %}
+         <p>No data available for plotting.</p>
+      {% endif %}
+   </div>
+
+   {% if data %}
+      <div class="data-container">
+         <h3>Our Top Selling Packages</h3>
+         <ul>
+            {% for label, size in data.items() %}
+               <li>{{ label }}: {{ size }}</li>
+            {% endfor %}
+         </ul>
+      </div>
+   {% endif %}
+</div> <!-- content container closes -->
 
 <!-- reviews section starts  -->
 

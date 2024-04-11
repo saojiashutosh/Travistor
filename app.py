@@ -1,5 +1,10 @@
 import base64
+import io
 import re
+import matplotlib
+import matplotlib.pyplot as plt
+
+matplotlib.use("agg")
 from bson import ObjectId
 from flask import (
     Flask,
@@ -50,7 +55,7 @@ def signup():
                 "Username is already in use. Please choose a different username."
             )
         elif not is_valid_username(request.form["username"]):
-            signup_user = "Invalid username format. Please use only letters, numbers, and underscores."
+            signup_user = "Invalid username format. Please use combination ofs letters, numbers, and underscores."
         else:
             hashed_password = bcrypt.hashpw(
                 request.form["password"].encode("utf-8"), bcrypt.gensalt()
@@ -166,12 +171,46 @@ def index():
     return render_template("index.html")
 
 
+def generate_plot():
+    bookings = mongo.db.booking.find()
+    package_counts = {}
+    for booking in bookings:
+        package_name = booking["package_name"]
+        if package_name in package_counts:
+            package_counts[package_name] += 1
+        else:
+            package_counts[package_name] = 1
+
+    labels = list(package_counts.keys())
+    sizes = list(package_counts.values())
+
+    if not labels or not sizes:
+        return None
+
+    plt.figure(figsize=(8, 6))
+    plt.pie(sizes, labels=labels, autopct="%1.1f%%", startangle=140)
+    # plt.title("Package Distribution")
+    plt.axis("equal")
+
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format="png")
+    buffer.seek(0)
+    plot_data = base64.b64encode(buffer.getvalue()).decode()
+    plt.close()
+
+    return plot_data, dict(zip(labels, sizes))
+
+
 @app.route("/about")
 def about():
-    if "username" in session:
-        return render_template("about.html", username=session["username"])
+    plot_data, data = generate_plot()
 
-    return render_template("about.html")
+    if "username" in session:
+        return render_template(
+            "about.html", username=session["username"], plot_data=plot_data, data=data
+        )
+    else:
+        return render_template("about.html", plot_data=plot_data, data=data)
 
 
 @app.route("/fampack")
