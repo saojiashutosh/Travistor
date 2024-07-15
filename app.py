@@ -289,13 +289,11 @@ def package_details(package_id):
 
 @app.route("/book", methods=["POST", "GET"])
 def book():
-
     if "username" not in session:
         flash("You need to sign in to book a package", "warning")
         return redirect(url_for("signin"))
 
     if request.method == "POST":
-        print("Inside POST request")
         package_name = request.args.get("package_name")
         package_price_str = request.form.get("package_price")
 
@@ -309,19 +307,14 @@ def book():
             flash("Invalid package price format", "error")
             return redirect(url_for("book"))
 
-        print(f"Package Name: {package_name}")
-
         try:
             book = mongo.db.booking
-
             username = session["username"]
             name = request.form["username"]
             person = request.form["persons"]
             contact = request.form["contact"]
 
             total_price = package_price * int(person)
-            print("Inserting data into the database...")
-
             book.insert_one(
                 {
                     "package_name": package_name,
@@ -332,10 +325,8 @@ def book():
                     "total_price": total_price,
                 }
             )
-
             return redirect(url_for("success"))
         except Exception as e:
-            print(f"Error during insertion: {e}")
             flash("Error during booking. Please try again.", "error")
             return redirect(url_for("book"))
 
@@ -472,4 +463,3 @@ def remove_package(package_id):
 
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=False)
-    app.run()

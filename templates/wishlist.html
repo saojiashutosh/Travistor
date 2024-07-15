@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travistor</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
-</head>
-<body>
-   {%include "navbar.html"%}
-   
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <style>
+      .button-container {
+        bottom: 10px; /* Adjust bottom spacing as needed */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .button-container .btn {
+        margin: 0 5px; /* Adjust margin as needed */
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
 
-   <section class="home-packages">
-    <h1 class="heading-title">Wishlist</h1>
+    <section class="home-packages">
+      <h1 class="heading-title">Wishlist</h1>
       <div class="box-container">
-          {% for item in wishlist %}
-              <div class="box">
-                <div class="image">
-                    {% if item.image %}
-                        <img src="data:image/jpeg;base64,{{ item.image }}" alt="Package Image" >
-                    {% endif %}
-                </div>
-                <div class="content">
-                    <h3>{{ item.package_name }}</h3>
-                    <h1 class="amount">₹{{ item.package_price }}</h1>
-                    <p><strong>Route:</strong> {{ item.route }}</p>
-                    <form action="/remove_package/{{ item._id  }}" method="POST">
-                        <button type="submit" class="btn" name="cancel">Remove</button>
-                    </form>           
-                </div>  
+        {% for item in wishlist %}
+          <div class="box">
+            <div class="image">
+              {% if item.image %}
+                <img src="data:image/jpeg;base64,{{ item.image }}" alt="Package Image" />
+              {% endif %}
+            </div>
+            <div class="content">
+              <h3>{{ item.package_name }}</h3>
+              <h1 class="amount">₹{{ item.package_price }}</h1>
+              <p>
+                <strong>Route:</strong> {{ item.route }}
+              </p>
+              <div class="button-container">
+                <form action="/remove_package/{{ item._id }}" method="POST" style="display: inline;">
+                  <button type="submit" class="btn" name="cancel">Remove</button>
+                </form>
+                <a href="{{ url_for('book', package_name=item.package_name, package_price=item.package_price) }}" class="btn">Book Now</a>
               </div>
-          {% endfor %} 
+            </div>
+          </div>
+        {% endfor %}
       </div>
-  </section>
-   {% include "footer.html" %}
-</body>
+    </section>
+    {% include 'footer.html' %}
+  </body>
 </html>

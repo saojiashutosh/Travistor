@@ -14,8 +14,8 @@ window.onscroll = () => {
 var homeSlider = new Swiper(".home-slider", {
    loop: true,
    navigation: {
-     nextEl: ".swiper-button-next",
-     prevEl: ".swiper-button-prev",
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
    },
 });
 
@@ -26,13 +26,13 @@ var reviewsSlider = new Swiper(".reviews-slider", {
    spaceBetween: 20,
    breakpoints: {
       0: {
-        slidesPerView: 1,
+         slidesPerView: 1,
       },
       700: {
-        slidesPerView: 2,
+         slidesPerView: 2,
       },
       1000: {
-        slidesPerView: 3,
+         slidesPerView: 3,
       },
    },
 });
@@ -44,7 +44,7 @@ loadMoreBtn.onclick = () => {
    let boxes = [...document.querySelectorAll('.packages .box-container .box')];
    for (var i = currentItem; i < currentItem + 3; i++) {
       if (boxes[i]) {
-        boxes[i].style.display = 'inline-block';
+         boxes[i].style.display = 'inline-block';
       }
    };
    currentItem += 3;
